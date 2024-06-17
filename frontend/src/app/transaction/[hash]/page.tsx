@@ -1,7 +1,10 @@
 import React from "react";
 import "dotenv/config";
-const getTxReceipt = async (hash) => {
-  const res = await fetch(process.env.INFURA_URL, {
+
+const infuraUrl = `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`
+
+const getTxReceipt = async (hash:string) => {
+  const res = await fetch(infuraUrl, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -18,7 +21,7 @@ const getTxReceipt = async (hash) => {
   return resJson.result;
 };
 
-export default async TransactionPage({ params }) {
+const TransactionPage = async ({params}) => {
     const receipt = await getTxReceipt(params.hash)
   return (
     <div className="overflow-x-auto">
@@ -29,6 +32,7 @@ export default async TransactionPage({ params }) {
             <th></th>
             <th>Transactions</th>
             <th>Status</th>
+            <th>Block Number</th>
           </tr>
         </thead>
         <tbody>
@@ -36,7 +40,8 @@ export default async TransactionPage({ params }) {
           <tr>
             <th>1</th>
             <td>{params.hash}</td>
-            <td>{receipt.status}</td>
+            <td>{receipt.status=='0x1' ? <div className="badge badge-accent badge-outline">Success</div> : <div className="badge badge-secondary badge-outline">Failure</div>}</td>
+            <td>{Number(receipt.blockNumber)}</td>
           </tr>
           {/* row 2 */}
           <tr>
@@ -53,3 +58,4 @@ export default async TransactionPage({ params }) {
     </div>
   );
 };
+export default TransactionPage
