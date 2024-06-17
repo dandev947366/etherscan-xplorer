@@ -12,8 +12,8 @@ const Stats = () => {
   
   <div className="stat place-items-center">
     <div className="stat-title">Users</div>
-    <div className="stat-value text-blue-400">4,200</div>
-    <div className="stat-desc text-blue-400">↗︎ 40 (2%)</div>
+    <div className="stat-value text-blue-200">4,200</div>
+    <div className="stat-desc text-blue-300">↗︎ 40 (2%)</div>
   </div>
   
   <div className="stat place-items-center">

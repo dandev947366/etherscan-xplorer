@@ -2,7 +2,7 @@ import React from 'react'
 
 const Stat2 = () => {
   return (
-    <div className="stats bg-blue-500 text-gray-800">
+    <div className="stats bg-blue-300 text-gray-800">
   
   <div className="stat">
     <div className="stat-title text-gray-800">Account balance</div>
