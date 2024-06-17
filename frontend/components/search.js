@@ -13,15 +13,30 @@ export default function Search() {
   };
 
   const handleSearch = async () => {
-    document.querySelector("#inputField").value = "";
-
-    const response = await axios.get(`http://localhost:5001/address`, {
-      params: { address: searchInput },
-    });
-
-    setResult(response.data.result);
-    setShowResult(true);
+    try {
+      const response = await axios.get(`http://localhost:5001/address`, {
+        params: { address: searchInput },
+      });
+  
+      setResult(response.data.result);
+      setShowResult(true);
+    } catch (error) {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        console.error('Server responded with error:', error.response.status);
+        console.error('Response data:', error.response.data);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error('Request made but no response received:', error.request);
+      } else {
+        // Something happened in setting up the request that triggered an error
+        console.error('Error setting up the request:', error.message);
+      }
+      // Optionally handle the error state in your component
+    }
   };
+  
+  
 
   return (
     <section className={styles.searchContainer}>
