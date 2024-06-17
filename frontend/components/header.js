@@ -8,12 +8,19 @@ import Logo from "../public/assets/logo.png";
 export default function Header() {
   const [ethPrice, setEthPrice] = useState("");
   useEffect(() => {
-    const getEthPrice = async () => {
-      const response = await axios.get(`http://localhost:5001/getethprice`, {});
-      setEthPrice(response.data.usdPrice);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:5001/getethprice');
+        setEthPrice(response.data.usdPrice);
+      } catch (error) {
+        console.error('Error fetching Ethereum price:', error);
+        
+      }
     };
-    getEthPrice();
-  });
+  
+    fetchData(); 
+  
+  }, []); 
   return (
     <section className={styles.header}>
       <section className={styles.topHeader}>
