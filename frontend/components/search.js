@@ -2,38 +2,19 @@ import { useState } from "react";
 import axios from "axios";
 import styles from "@/styles/Home.module.css";
 import SearchResults from "./searchResults.js";
+import { ScanSearch } from 'lucide-react';
+import {useRouter} from 'next/navigation'
 
 export default function Search() {
   const [showResult, setShowResult] = useState(false);
   const [result, setResult] = useState([]);
   const [searchInput, setSearchInput] = useState("");
 
-  const changeHandler = (e) => {
-    setSearchInput(e.target.value);
-  };
-
-  const handleSearch = async () => {
-    try {
-      const response = await axios.get(`http://localhost:5001/address`, {
-        params: { address: searchInput },
-      });
-  
-      setResult(response.data.result);
-      setShowResult(true);
-    } catch (error) {
-      if (error.response) {
-        // The request was made and the server responded with a status code
-        console.error('Server responded with error:', error.response.status);
-        console.error('Response data:', error.response.data);
-      } else if (error.request) {
-        // The request was made but no response was received
-        console.error('Request made but no response received:', error.request);
-      } else {
-        // Something happened in setting up the request that triggered an error
-        console.error('Error setting up the request:', error.message);
-      }
-      // Optionally handle the error state in your component
-    }
+  const handleSearch = (e) => {
+    e.preventDefault()
+    console.log(searchInput)
+    const router = useRouter()
+    router.push(`transaction/${searchInput}`)
   };
   
   
@@ -51,21 +32,10 @@ export default function Search() {
             maxLength="120"
             placeholder="Search by Address / Txn Hash / Block / Token / Domain Name"
             required
-            onChange={changeHandler}
+            onChange={(e)=>(setSearchInput(e.target.value))}
           />
           <button className={styles.btn} onClick={handleSearch}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className={styles.magnifying}
-            >
-              <path
-                fillRule="evenodd"
-                d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z"
-                clipRule="evenodd"
-              />
-            </svg>
+          <ScanSearch />
           </button>
         </section>
       </section>
