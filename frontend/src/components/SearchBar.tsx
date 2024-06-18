@@ -4,6 +4,7 @@ import { Search } from "lucide-react";
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 const ethers = require('ethers');
+import SearchResult from './SearchResult';
 const SearchBar = () => {
   const [searchVal, setSearchVal] = useState("");
   const [result, setResult] = useState(null);
@@ -14,6 +15,9 @@ const SearchBar = () => {
     setSearchVal(searchVal); 
     console.log(searchVal)
   }
+  
+  
+  
   return (
     <div className="">
       <form className="mb-5 flex flex-row items-center" onSubmit={handleSearch}>
@@ -28,6 +32,7 @@ const SearchBar = () => {
           Search
         </button>
       </form>
+      <SearchResult searchVal={searchVal} />
     </div>
   );
 };
