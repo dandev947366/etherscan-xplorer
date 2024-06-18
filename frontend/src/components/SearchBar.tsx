@@ -5,22 +5,19 @@ import { useRouter } from 'next/navigation';
 import axios from 'axios';
 const ethers = require('ethers');
 import SearchResult from './SearchResult';
+
+
 const SearchBar = () => {
   const [searchVal, setSearchVal] = useState("");
   const [result, setResult] = useState(null);
-  const infuraUrl = `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`;
   
-  const handleSearch = (e) => {
-    e.preventDefault(); 
-    setSearchVal(searchVal); 
-    console.log(searchVal)
-  }
+  const infuraUrl = `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`;
   
   
   
   return (
     <div className="">
-      <form className="mb-5 flex flex-row items-center" onSubmit={handleSearch}>
+      <form className="mb-5 flex flex-row items-center" >
         <input
           type="text"
           placeholder="Search transaction/hash address"
