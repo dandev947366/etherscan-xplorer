@@ -74,12 +74,19 @@ const getProviderOrSigner = async (needSigner = false) => {
     
     </div>
     <div className="flex-none">
-    
-      {/* <Link href='/create' className='btn btn-ghost'>Create Post</Link> */}
-      <button className="btn btn-neutral" onClick={connectWallet}>Connect Wallet</button>
+          {!walletConnected ? (
+            <button className="btn btn-neutral" onClick={connectWallet}>
+              Connect Wallet
+            </button>
+          ) : (
+            <button className="btn btn-neutral">
+              {address}
+            </button>
+          )}
+        </div>
     </div>
   </div>
-  </div>
+
   )
 }
 

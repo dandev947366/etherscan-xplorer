@@ -8,9 +8,8 @@ export default function Home() {
     <main className="flex flex-col">
     
     <SearchBar  />
-     <Stat2  /> 
-     <Stats  />
-    <SearchResult />
+    
+   
       
     </main>
   );

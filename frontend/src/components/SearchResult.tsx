@@ -1,11 +1,15 @@
 'use client'
 import React, {useState} from 'react'
 import SearchBar from './SearchBar'
+import Stats from "@/components/Stats";
+import Stat2 from "@/components/Stat2";
 const SearchResult = ({ searchVal }) => {
   const [searchResults, setSearchResults] = useState([]);
   
   return (
-    <div className="overflow-x-auto">
+    <div className="flex flex-col">
+     <Stat2  /> 
+     <Stats  />
   <table className="table table-zebra">
     {/* head */}
     <thead>
