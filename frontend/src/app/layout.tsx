@@ -5,8 +5,8 @@ import Navbar from "@/components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "NextJs Blog Post",
-  description: "NextJS Blogpost with Prisma, React Query, DaisyUI",
+  title: "Etherscan Explorer",
+  description: "Etherscan Explore with NextJS",
 };
 
 export default function RootLayout({
