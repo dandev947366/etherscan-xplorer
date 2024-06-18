@@ -10,7 +10,7 @@ export default function Home() {
     <SearchBar  />
      <Stat2  /> 
      <Stats  />
-      <SearchResult />
+    <SearchResult />
       
     </main>
   );

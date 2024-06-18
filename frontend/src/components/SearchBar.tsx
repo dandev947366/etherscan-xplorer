@@ -9,10 +9,14 @@ const SearchBar = () => {
   const [result, setResult] = useState(null);
   const infuraUrl = `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`;
   
-  
+  const handleSearch = (e) => {
+    e.preventDefault(); 
+    setSearchVal(searchVal); 
+    console.log(searchVal)
+  }
   return (
     <div className="">
-      <form className="mb-5 flex flex-row items-center">
+      <form className="mb-5 flex flex-row items-center" onSubmit={handleSearch}>
         <input
           type="text"
           placeholder="Search transaction/hash address"
