@@ -6,6 +6,7 @@ import Stat2 from "@/components/Stat2";
 export default function Home() {
   return (
     <main className="flex flex-col">
+    
     <SearchBar  />
      <Stat2  /> 
      <Stats  />

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import SearchBar from './SearchBar'
 const SearchResult = () => {
   return (
     <div className="overflow-x-auto">
