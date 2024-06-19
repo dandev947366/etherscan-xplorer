@@ -3,18 +3,30 @@ import React, { useState } from "react";
 import { Search } from "lucide-react";
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
-const ethers = require('ethers');
+import { Network, Alchemy, Utils } from 'alchemy-sdk'
 import SearchResult from './SearchResult';
+require('dotenv').config();
 
+const {ALCHEMY_API_KEY} = process.env
+const settings = {
+  apiKey: ALCHEMY_API_KEY,
+  network: Network.OPT_SEPOLIA
+};
+
+const alchemy = new Alchemy(settings);
 
 const SearchBar = () => {
-  const [searchVal, setSearchVal] = useState("");
-  const [result, setResult] = useState(null);
+  const [searchVal, setSearchVal] = useState(undefined);
+  const [result, setResult] = useState(undefined);
+  const [blockNumber, setBlockNumber] = useState(undefined)
   
-  const infuraUrl = `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`;
+  const getBlockNumber = async () => {
+    const blockNum = await alchemy.core.getBlockNumber()
+    setBlockNumber(blockNum)
+    console.log(blockNum)
+  }
   
-  
-  
+
   return (
     <div className="">
       <form className="mb-5 flex flex-row items-center" >

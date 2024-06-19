@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import SearchBar from './SearchBar'
 import Stats from "@/components/Stats";
 import Stat2 from "@/components/Stat2";
-const SearchResult = ({ searchVal }) => {
+const SearchResult = ({ searchVal, blockNumber }) => {
   const [searchResults, setSearchResults] = useState([]);
   
   return (
@@ -25,7 +25,7 @@ const SearchResult = ({ searchVal }) => {
       <tr>
         <th>1</th>
         <td>{searchVal}</td>
-        <td>Quality Control Specialist</td>
+        <td>Blocknumber: {blockNumber}</td>
         <td>Blue</td>
       </tr>
       {/* row 2 */}
