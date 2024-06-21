@@ -1,6 +1,7 @@
-import { Network, Alchemy } from "alchemy-sdk";
+import { Network, Alchemy, Utils } from "alchemy-sdk";
 import dotenv from "dotenv";
 import BigNumber from 'bignumber.js';
+
 dotenv.config();
 const { ALCHEMY_API_KEY } = process.env;
 
@@ -127,12 +128,15 @@ const getGasPrice = async () => {
     console.error('Error fetching gas price:', error);
   }
 };
-export {
-  getBlockNumber,
-  getTokenBalances,
-  getMetadata,
-  getTransactionCount,
-  checkContractAddress,
-  getTokens,
-  getGasPrice
-}
+
+getGasPrice()
+
+// export default {
+//   getBlockNumber,
+//   getTokenBalances,
+//   getMetadata,
+//   getTransactionCount,
+//   checkContractAddress,
+//   getTokens,
+//   getGasPrice
+// }
